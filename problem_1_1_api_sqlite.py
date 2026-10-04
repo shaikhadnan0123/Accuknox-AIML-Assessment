@@ -23,7 +23,17 @@ cursor.execute("""
         publication_year INTEGER
     )
 """)
+cursor.execute("DELETE FROM books")
+cursor.execute("""
+    CREATE TABLE IF NOT EXISTS books (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        title TEXT NOT NULL,
+        author TEXT,
+        publication_year INTEGER
+    )
+""")
 
+cursor.execute("DELETE FROM books")
 # 4. Insert books
 for book in books:
     title = book.get("title")

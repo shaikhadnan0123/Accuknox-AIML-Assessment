@@ -13,6 +13,16 @@ cursor.execute("""
         email TEXT NOT NULL
     )
 """)
+cursor.execute("DELETE FROM users")
+cursor.execute("""
+    CREATE TABLE IF NOT EXISTS users (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT NOT NULL,
+        email TEXT NOT NULL
+    )
+""")
+
+cursor.execute("DELETE FROM users")
 
 # Read CSV and insert users
 with open("data/users.csv", "r", newline="", encoding="utf-8") as file:
